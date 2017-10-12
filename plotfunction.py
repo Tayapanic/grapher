@@ -3,6 +3,21 @@ from pyparsing import Literal,CaselessLiteral,Word,Combine,Group,Optional,\
 from numpy import *
 import operator
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg')
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+from matplotlib.backend_bases import key_press_handler
+from matplotlib.figure import Figure
+import sys
+from matplotlib.widgets import Slider, Button, RadioButtons
+
+if sys.version_info[0] < 3:
+    import Tkinter as Tk
+else:
+    import tkinter as Tk
+
+def destroy(e):
+    sys.exit()
 
 exprStack = []
 
@@ -112,10 +127,6 @@ fun=raw_input("Please input a function to be evaluated: ")
 x1=input("Set x")
 y=input("Set y")
 g=compute(fun,x1,y)
-#print g
-
-
-
 
 #labels
 xlabel=raw_input("Please input x-label: ")
@@ -124,16 +135,51 @@ ylabel=raw_input("Please input y-label: ")
 Title=raw_input("Please input title of graph: ")
 #linestyle
 
-
-
 f = []
 z=x1
 for i in range(200):
        z=x1+(i*float(y-x1)/200)
        f.append(z)
-#print f
-plt.xlabel(xlabel)
-plt.ylabel(ylabel)
-plt.title(Title)
-plt.plot(f,g)
+
+root = Tk.Tk()
+root.wm_title("Hamara bajaj")
+fls = Figure(figsize=(5, 4), dpi=100)
+a = fls.add_subplot(111)
+a.plot(f, g)
+a.set_title(Title)
+a.set_xlabel(xlabel)
+a.set_ylabel(ylabel)
+
+
+# a tk.DrawingArea
+canvas = FigureCanvasTkAgg(fls, master=root)
+canvas.show()
+canvas.get_tk_widget().pack(side=Tk.TOP, fill=Tk.BOTH, expand=1)
+toolbar = NavigationToolbar2TkAgg(canvas, root)
+toolbar.update()
+canvas._tkcanvas.pack(side=Tk.TOP, fill=Tk.BOTH, expand=1)
+
+def on_key_event(event):
+    print('you pressed %s' % event.key)
+    key_press_handler(event, canvas, toolbar)
+
+canvas.mpl_connect('key_press_event', on_key_event)
+
+def _quit():
+    root.quit()     # stops mainloop
+    root.destroy()
+
+button = Tk.Button(master=root, text='Quit', command=sys.exit)
+button.pack(side=Tk.BOTTOM)
+axcolor = 'lightgoldenrodyellow'
+rax = plt.axes([0.025, 0.5, 0.15, 0.15], facecolor=axcolor)
+radio = RadioButtons(rax, ('red', 'blue', 'green'), active=0)
+
+
+def colorfunc(label):
+    l.set_color(label)
+    fls.canvas.draw_idle()
+radio.on_clicked(colorfunc)
 plt.show()
+
+Tk.mainloop()

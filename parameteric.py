@@ -90,7 +90,7 @@ def evaluateStack( s ,x1,y):
     elif op == "E":
         return math.e  # 2.718281828
     elif op == "X":
-        return linspace(x1, y, 200)
+        return linspace(x1, y, 300)
     elif op in fn:
         return fn[op]( evaluateStack( s,x1,y ) )
     elif op[0].isalpha():
@@ -117,11 +117,14 @@ y1=input("Set lower limit of y-axis")
 y2=input("Set upper limit of y-axis")
 fy=compute(yun,y1,y2)
 
-print fx
-print fy
+fls = plt.figure()
+a = fls.add_subplot(111)
+a.plot(fx, fy)
+a.set_title("Title")
+a.set_xlabel("xlabel")
+a.set_ylabel("ylabel")
 
-plt.plot(fx,fy)
-plt.show
+plt.show()
 
 
 
