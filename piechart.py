@@ -10,7 +10,7 @@ for i in range(n):
 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
 labels = ar
 sizes = ar2
-explode = ar3  # only "explode" the 2nd slice (i.e. 'Hogs')
+explode = ar3  # an array corresponding t which elemnts should be exploded. right now no element
 
 fig1, ax1 = plt.subplots()
 ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
