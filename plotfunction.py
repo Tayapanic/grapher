@@ -159,27 +159,9 @@ toolbar = NavigationToolbar2TkAgg(canvas, root)
 toolbar.update()
 canvas._tkcanvas.pack(side=Tk.TOP, fill=Tk.BOTH, expand=1)
 
-def on_key_event(event):
-    print('you pressed %s' % event.key)
-    key_press_handler(event, canvas, toolbar)
-
-canvas.mpl_connect('key_press_event', on_key_event)
 
 def _quit():
     root.quit()     # stops mainloop
     root.destroy()
-
-button = Tk.Button(master=root, text='Quit', command=sys.exit)
-button.pack(side=Tk.BOTTOM)
-axcolor = 'lightgoldenrodyellow'
-rax = plt.axes([0.025, 0.5, 0.15, 0.15], facecolor=axcolor)
-radio = RadioButtons(rax, ('red', 'blue', 'green'), active=0)
-
-
-def colorfunc(label):
-    l.set_color(label)
-    fls.canvas.draw_idle()
-radio.on_clicked(colorfunc)
-plt.show()
 
 Tk.mainloop()
