@@ -46,15 +46,12 @@ def func_gui():
 
 def line_color():
     global result 
-    result = askcolor(color="#6A9662",title = "Chose a color") 
-    #print result
-    
+    result = askcolor(color="#6A9662",title = "Chose a color")     #from tkColorChooser
 
 def callback():
-    #if askyesno('Verify', 'Really quit?'):
+    #if askyesno('Verify', 'Really quit?'):   # from tkMessageBox
     	sys.exit()
   	
-
 l1 = Tkinter.Label(top, text="Enter function y in terms of x",font=btn_font, borderwidth=2)
 l2 = Tkinter.Label(top, text="Lower limit of x",font=btn_font, borderwidth=2)
 l3 = Tkinter.Label(top, text="Upper limit of x",font=btn_font, borderwidth=2)
@@ -78,8 +75,8 @@ title.insert(0,'Grapher')
 use_diff = Tkinter.Checkbutton(top, text="Plot Differential",variable=Diff)
 use_integr = Tkinter.Checkbutton(top, text="Plot Integral",variable=Inte)
 chose_color=Tkinter.Button(top,text='Choose a Line-colour',command=line_color)
-quit_bt = Tkinter.Button(master=top, text='Quit', command=callback,font=btn_font,width=6)
 submit_btn = Tkinter.Button(top, text="Submit", command=func_gui,font=btn_font)
+quit_bt = Tkinter.Button(master=top, text='Quit', command=callback,font=btn_font,width=6)
 
 
 l1.grid(row = 0, column = 0)
