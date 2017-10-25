@@ -2,6 +2,7 @@ import sys
 import os
 import Tkinter
 import tkFont
+#from tkFileDialog import askopenfilename
 #import tkMessageBox
 top=Tkinter.Tk()
 #top.geometry('816x870+0+0')
@@ -10,9 +11,9 @@ btn_font = tkFont.Font(family='Helvetica',weight='bold')
 
 #cornflowerblue
 def csv_gui():
-    os.system('python main_gui.py')
+    os.system('python csv_data_input.py')
 def func_gui():
-    os.system('python function_gui.py')
+    os.system('python func.py')
 def give_points():
 	os.system('python give_points.py')
 #def pie_print():

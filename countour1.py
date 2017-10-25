@@ -12,10 +12,10 @@ x = y = np.arange(-3.0, 3.0, 0.05)
 X, Y = np.meshgrid(x, y)
 zs = np.array([fun(x,y) for x,y in zip(np.ravel(X), np.ravel(Y))])
 Z = zs.reshape(X.shape)
-print zs
-print Z
-print x
-print X
+#print zs
+#print Z
+#print x
+#print X
 ax.plot_surface(X, Y, Z)
 
 ax.set_xlabel('X Label')

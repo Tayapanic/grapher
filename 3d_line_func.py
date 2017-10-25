@@ -14,19 +14,6 @@ btn_font = tkFont.Font(family='Purisa',weight='bold')
 result=((17, 235, 224), '#11ebe0')   #default line_colour
 t = symbols('t')
 
-def func_gui():
-	x=funx.get()
-	y=funy.get()
-	z=funz.get()
-	p1=plot3d_parametric_line(x,y,z,(t, l_t.get(), u_t.get()), show=false)
-	p1[0].line_color=result[1]
-	p1.show()
-
-def line_color():
-    global result 
-    result = askcolor(color="#6A9662",title = "Chose a color")
-def callback():
-	sys.exit()
 funx = Tkinter.StringVar()
 funy = Tkinter.StringVar()
 funz = Tkinter.StringVar()
@@ -35,6 +22,19 @@ u_t = Tkinter.DoubleVar()
 #x_lab = Tkinter.StringVar()
 #y_lab = Tkinter.StringVar()
 tit = Tkinter.StringVar()
+
+def func_gui():
+	x=funx.get()
+	y=funy.get()
+	z=funz.get()
+	p1=plot3d_parametric_line(x,y,z,(t, l_t.get(), u_t.get()), show=false,title=tit.get())#,xlabel=x_lab.get(),ylabel=y_lab.get())
+	p1[0].line_color=result[1]
+	p1.show()
+def line_color():
+    global result 
+    result = askcolor(color="#6A9662",title = "Chose a color")
+def callback():
+	sys.exit()
 
 l1 = Tkinter.Label(top, text="Enter x-cordinate in terms of t",font=btn_font, borderwidth=2)
 l2 = Tkinter.Label(top, text="Enter y-cordinate in terms of t",font=btn_font, borderwidth=2)
@@ -50,15 +50,15 @@ funcx = Tkinter.Entry(top,textvariable=funx)
 funcy = Tkinter.Entry(top,textvariable=funy)
 funcz = Tkinter.Entry(top,textvariable=funz)
 low_t = Tkinter.Entry(top,textvariable=l_t)
-#v = Tkinter.IntVar()
-upper_t = Tkinter.Entry(top,textvariable=u_t)#,text=v)
-#v.set(10)
+upper_t = Tkinter.Entry(top,textvariable=u_t)
+upper_t.delete(0,'end')
+upper_t.insert(0,10.0)
 #x_label = Tkinter.Entry(top,textvariable=x_lab)
 #x_label.insert(0,'x-axis')
 #y_label = Tkinter.Entry(top,textvariable=y_lab)
 #y_label.insert(0,'y-axis')
 title = Tkinter.Entry(top)#,textvariable=tit)
-#title.insert(0,'Grapher')
+title.insert(0,'Grapher')
 chose_color=Tkinter.Button(top,text='Choose a Line-colour',command=line_color)
 submit_btn = Tkinter.Button(top, text="Submit", command=func_gui,font=btn_font)
 quit_bt = Tkinter.Button(master=top, text='Quit', command=callback,font=btn_font,width=6)

@@ -13,9 +13,7 @@ top=Tkinter.Tk()
 top.title('Grapher')
 btn_font = tkFont.Font(family='Purisa',weight='bold')
 Diff = Tkinter.IntVar()
-#Diff = 0
 Inte = Tkinter.IntVar()
-#Inte = 0
 fun = Tkinter.StringVar()
 l_x = Tkinter.DoubleVar()
 u_x = Tkinter.DoubleVar()
@@ -32,15 +30,15 @@ def func_gui():
     l = l_x.get()
     u = u_x.get()
     if Diff.get():
-		p1 = plot(diff(function,x),('x',l,u),show=false)
+		p1 = plot(diff(function,x),('x',l,u),show=false,title=tit.get(),xlabel=x_lab.get(),ylabel=y_lab.get())
 		p1[0].line_color=result[1]
 		p1.show()
     elif Inte.get():
-    	p2 = plot(integrate(function,x),('x',l,u),show=false)
+    	p2 = plot(integrate(function,x),('x',l,u),show=false,title=tit.get(),xlabel=x_lab.get(),ylabel=y_lab.get())
     	p2[0].line_color=result[1]
     	p2.show()
     else :
-    	p3 = plot(function,('x',l,u),show=false) 
+    	p3 = plot(function,('x',l,u),show=false,title=tit.get(),xlabel=x_lab.get(),ylabel=y_lab.get()) 
     	p3[0].line_color=result[1]
     	p3.show()
 
@@ -63,9 +61,9 @@ l7 = Tkinter.Label(top, text="Chose a Line-colour",font=btn_font)
 # Create the widgets
 funct = Tkinter.Entry(top,textvariable=fun)
 low_x = Tkinter.Entry(top,textvariable=l_x)
-v = Tkinter.IntVar()
-upper_x = Tkinter.Entry(top,textvariable=u_x,text=v)
-v.set(10)
+upper_x = Tkinter.Entry(top,textvariable=u_x)
+upper_x.delete(0,'end')
+upper_x.insert(0,10.0)
 x_label = Tkinter.Entry(top,textvariable=x_lab)
 x_label.insert(0,'x-axis')
 y_label = Tkinter.Entry(top,textvariable=y_lab)
@@ -76,7 +74,7 @@ use_diff = Tkinter.Checkbutton(top, text="Plot Differential",variable=Diff)
 use_integr = Tkinter.Checkbutton(top, text="Plot Integral",variable=Inte)
 chose_color=Tkinter.Button(top,text='Choose a Line-colour',command=line_color)
 submit_btn = Tkinter.Button(top, text="Submit", command=func_gui,font=btn_font)
-quit_bt = Tkinter.Button(master=top, text='Quit', command=callback,font=btn_font,width=6)
+quit_bt = Tkinter.Button(master=top, text='Go Back', command=callback,font=btn_font,width=6)
 
 
 l1.grid(row = 0, column = 0)
