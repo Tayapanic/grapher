@@ -15,8 +15,8 @@ u_y=Tkinter.DoubleVar()
 def calculate(value, function):
     x = value
     return eval(function)
-fig, ax = plt.subplots()
 xdata, ydata = [], []
+fig, ax = plt.subplots()
 ln, = plt.plot([], [], 'ro', animated=True)
 def init():
 	l=l_x.get()
@@ -35,9 +35,10 @@ def update(frame):
 def callback():
     sys.exit()
 def func_gui():
-	ani = FuncAnimation(fig, update, frames=np.linspace(0, 2*np.pi,no_frames.get()),init_func=init, blit=True)
+	l=l_x.get()
+	u=u_x.get()
+	ani = FuncAnimation(fig, update, frames=np.linspace(l,u,no_frames.get()),init_func=init, blit=True)
 	plt.show()
-
 l1=Tkinter.Label(top,text="Function in terms of x")
 l2=Tkinter.Label(top,text="Lower limit of x")
 l3=Tkinter.Label(top,text="Upper limit of x")
