@@ -21,8 +21,8 @@ def twod_csv1():
 	with open(filename,'r') as csvfile:
 		plots = csv.reader(csvfile, delimiter=',')
 		for row in plots:
-			x.append(int(row[0]))
-			y.append(int(row[1]))
+			x.append(float(row[0]))
+			y.append(float(row[1]))
 	plt.plot(x,y)
 	plt.xlabel('x')
 	plt.ylabel('y')
@@ -62,7 +62,21 @@ def three_d_csv():
 	ax1.scatter(x,y,z)
 	plt.show()
 def three():
-	os.system('python 3d_csv.py')
+	colors = (0,0,0)
+	filename = askopenfilename()
+	x = []
+	y = []
+	with open(filename,'r') as csvfile:
+		plots = csv.reader(csvfile, delimiter=',')
+		for row in plots:
+			x.append(float(row[0]))
+			y.append(float(row[1]))
+	plt.scatter(x, y,  c=colors, alpha=0.5)
+	plt.xlabel('x')
+	plt.ylabel('y')
+	plt.title('Grapher')
+	plt.legend()
+	plt.show()
 def bar_plot():
 	filename = askopenfilename()
 	data = pd.read_csv(filename, sep=',',header=None, index_col =0)
@@ -92,7 +106,7 @@ b2=Tkinter.Button(top,text="Horizontal Bar graph",command= hor_bar,height =8,wid
 b3=Tkinter.Button(top,text="Bar graph",command= bar_plot,height =8,width=27,font=btn_font)
 b4=Tkinter.Button(top,text="Pie chart",command= pie_print,height =8,width=27,font=btn_font)
 b5=Tkinter.Button(top,text="Histogram",command=hist,font=btn_font,height =8,width=27)
-b6=Tkinter.Button(top,text="3d Scatter plot",command=three_d_csv,font=btn_font,height =8,width=27)
+b6=Tkinter.Button(top,text="2d Scatter plot",command=three,font=btn_font,height =8,width=27)
 quit_bt = Tkinter.Button(master=top, text='Go back', command=sys.exit,height =8,width=27,font=btn_font)
 
 b1.grid(row=0,column=0)
