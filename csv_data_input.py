@@ -23,10 +23,10 @@ def twod_csv1():
 		for row in plots:
 			x.append(int(row[0]))
 			y.append(int(row[1]))
-	plt.plot(x,y, label='Loaded from file!')
+	plt.plot(x,y)
 	plt.xlabel('x')
 	plt.ylabel('y')
-	plt.title('Interesting Graph\nCheck it out')
+	plt.title('Grapher')
 	plt.legend()
 	plt.show()
 def hist():
@@ -47,6 +47,7 @@ def three_d_csv():
     ax1 = fig.add_subplot(111,projection='3d')
     filename = askopenfilename()
     data = csv.reader(open(filename, 'rb'), delimiter=",", quotechar='|')
+    print data
     column1, column2,column3 = [], [],[]
     for row in data:
     	column1.append(float(row[0]))
@@ -55,8 +56,13 @@ def three_d_csv():
 	x= np.array(column1)
 	y=np.array(column2)
 	z=np.array(column3)
+	print column1
+	print column2
+	print column3
 	ax1.scatter(x,y,z)
 	plt.show()
+def three():
+	os.system('python 3d_csv.py')
 def bar_plot():
 	filename = askopenfilename()
 	data = pd.read_csv(filename, sep=',',header=None, index_col =0)
@@ -65,7 +71,7 @@ def bar_plot():
 	plt.xlabel('Words')
 	plt.title('Title')
 	plt.show()
-	os.system('python bar_graph.py')
+	#os.system('python bar_graph.py')
 def pie_print():
 	filename = askopenfilename()
 	data = csv.reader(open(filename, 'rb'), delimiter=",", quotechar='|')
@@ -87,7 +93,7 @@ b3=Tkinter.Button(top,text="Bar graph",command= bar_plot,height =8,width=27,font
 b4=Tkinter.Button(top,text="Pie chart",command= pie_print,height =8,width=27,font=btn_font)
 b5=Tkinter.Button(top,text="Histogram",command=hist,font=btn_font,height =8,width=27)
 b6=Tkinter.Button(top,text="3d Scatter plot",command=three_d_csv,font=btn_font,height =8,width=27)
-quit_bt = Tkinter.Button(master=top, text='Quit', command=sys.exit,height =8,width=27,font=btn_font)
+quit_bt = Tkinter.Button(master=top, text='Go back', command=sys.exit,height =8,width=27,font=btn_font)
 
 b1.grid(row=0,column=0)
 b5.grid(row=0,column=1)
