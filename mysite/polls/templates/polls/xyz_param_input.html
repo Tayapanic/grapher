@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/button.css' %}">
+
+<form action="{% url 'polls:xyz_param' %}" method="post">
+{% csrf_token %}
+Expression for x in terms of u and v:<br>
+<input type="text" name="x_function" /> <br>
+
+Expression for y in terms of u and v:<br>
+<input type="text" name="y_function" /> <br>
+
+Expression for z in terms of u and v:<br>
+<input type="text" name="z_function" /> <br>
+
+Lower limit of u:<br>
+<input type="text" name="u_lower" /> <br>
+Upper limit of u:<br>
+<input type="text" name="u_upper" /> <br>
+Lower limit of v:<br>
+<input type="text" name="v_lower" /> <br>
+Upper limit of v:<br>
+<input type="text" name="v_upper" /> <br><br>
+
+<input type="submit" value="Submit" />
+</form>
+

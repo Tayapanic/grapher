@@ -10,13 +10,25 @@ from polls.graph_py.histogram import *
 from polls.graph_py.y_as_x import *
 from polls.graph_py.z_as_yx import *
 from polls.graph_py.polar import *
-
+from polls.graph_py.xyz_param import *
 from django.core.files.storage import FileSystemStorage
 import json
 
 def graph_type(request):
 	return render(request,'polls/graph_type.html')
-
+def xyz_param(request):
+	if request.method=="POST":
+		x=request.POST['x_function']
+		y=request.POST['y_function']
+		z=request.POST['z_function']
+		ul=float(request.POST['u_lower'])
+		uu=float(request.POST['u_upper'])
+		vl=float(request.POST['v_lower'])
+		vu=float(request.POST['v_upper'])
+		xyz_param_graph(x,y,z,ul,uu,vl,vu)
+		return render(request,'polls/xyz_param_output.html')
+	else:
+		return render(request,'polls/xyz_param_input.html')	
 def polar_plot(request):
 	if request.method=="POST":
 		polar_function=request.POST['polar_function']

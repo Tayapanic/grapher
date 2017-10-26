@@ -9,11 +9,11 @@ height='500' /> -->
 
 <body>
 <center>
-<img src="{% static 'polls/polar_graph.png' %}" alt="mY image"
+<img src="{% static 'polls/polar_graph.png' %}?cachebuster=polar_as_plot1" alt="mY image"
 height='500' />
 </center>
 <br>
-<a href="{% url 'polls:polar_plot' %}"> Fill input </a> <br> <br>
+<a href="{% url 'polls:polar_plot' %}"> Plot again </a> <br> <br>
 <a href="{% url 'polls:graph_type' %}"> Select graph type </a>
 
 </body>
