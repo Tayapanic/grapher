@@ -62,7 +62,7 @@ def three_d_csv():
 	ax1.scatter(x,y,z)
 	plt.show()
 def three():
-	colors = (0,0,0)
+	colors = (0,1,0)
 	filename = askopenfilename()
 	x = []
 	y = []
