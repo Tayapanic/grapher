@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt,mpld3
 from polls.graph_py.histogram import *
 from polls.graph_py.y_as_x import *
 from polls.graph_py.z_as_yx import *
+from polls.graph_py.polar import *
 
 from django.core.files.storage import FileSystemStorage
 import json
@@ -16,6 +17,15 @@ import json
 def graph_type(request):
 	return render(request,'polls/graph_type.html')
 
+def polar_plot(request):
+	if request.method=="POST":
+		polar_function=request.POST['polar_function']
+		polar_lower_limit=request.POST['lower_limit']
+		polar_upper_limit=request.POST['upper_limit']
+		polar_graph(polar_function,polar_lower_limit,polar_upper_limit)
+		return render(request,'polls/polar_output.html')
+	else:
+		return render(request,'polls/polar_input.html')
 def z_as_yx(request):
 	if request.method=="POST":
 		z_as_yx_input=request.POST['yx_input']

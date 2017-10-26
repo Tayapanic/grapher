@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/button.css' %}">
+
+<form action="{% url 'polls:polar_plot' %}" method="post">
+{% csrf_token %}
+Expression:<br>
+<input type="text" name="polar_function" /> <br>
+Lower limit:<br>
+<input type="text" name="lower_limit" /> <br>
+Upper limit:<br>
+<input type="text" name="upper_limit" /> <br><br>
+
+<input type="submit" value="Submit" />
+</form>
+

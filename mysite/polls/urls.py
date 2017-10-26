@@ -16,5 +16,6 @@ urlpatterns = [
     url(r'^histogram/$',views.histogram,name='histogram'),
     url(r'^y_as_x/$',views.y_as_x,name='y_as_x'),
     url(r'^z_as_yx/$',views.z_as_yx,name='z_as_yx'),
+    url(r'^polar_plot/$',views.polar_plot,name='polar_plot'),
 
 ]

@@ -3,9 +3,9 @@ from pylab import *
 import matplotlib.pyplot as plt,mpld3
 from pylab import *
 import numpy as np
-#from scitools.StringFunction import StringFunction
+
 #formula=input("formula:  ")
-#formula=str(formula)
+
 def calculate(value, function):
     x = value
     return eval(function)
@@ -15,11 +15,11 @@ def polar_graph(formula,a,b):
 	
 	y = np.arange(float(a)*float(2)*np.pi, float(b)*float(2)*np.pi, .01)
 	plt.polar(y, calculate(y,formula))
-	#plt.savefig('polls/static/polls/polar_graph.png')
-	mpld3.save_html(plt.figure(1),"test.html")
+	plt.savefig('polls/static/polls/polar_graph.png')
+	#mpld3.save_html(plt.figure(1),"test.html")
 	#fig_hist=mpld3.fig_to_html(plt.figure(1))
-	plt.show()
-k=input()
-a=input()
-b=input()
-polar_graph(k,a,b)
+	plt.close()
+#k=input()
+#a=input()
+#b=input()
+#polar_graph(k,a,b)
