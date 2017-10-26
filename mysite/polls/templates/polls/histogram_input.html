@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/button.css' %}">
+</head>
+<form action="{% url 'polls:histogram' %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<input type="file" name='hist_file'>
+ <br><br>
+Title of bar graph:<br>
+<input type="text" name='hist_file_title'>
+ <br>
+X-label:<br>
+<input type="text" name='hist_file_xlabel'>
+ <br>
+Y-label:<br>
+<input type="text" name='hist_file_ylabel'>
+ <br>
+
+<input type="submit" value="Submit" />
+</form>
+
+<body>
+
+</body>
+</html>

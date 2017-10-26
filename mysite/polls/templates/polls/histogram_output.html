@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!-- <img src="{% static 'polls/histogram.png' %}" alt="mY image"
+height='500' /> -->
+
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/button.css' %}">
+</head>
+
+<body>
+<center>
+{{ fig_hist|safe }}
+</center>
+<br>
+<a href="{% url 'polls:histogram' %}"> Fill input </a> <br> <br>
+<a href="{% url 'polls:graph_type' %}"> Select graph type </a>
+
+</body>
+</html>

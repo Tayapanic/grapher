@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/button.css' %}">
+</head>
+<body>
+
+<form action="{% url 'polls:y_as_x' %}" method="post">
+{% csrf_token %}
+Funcion y in terms of x:<br>
+<input type="text" name='y_as_x_input'> <br>
+Set lower limit of x:<br>
+<input type="text" name='lower_limit'> <br> 
+Set upper limit of x:<br>
+<input type="text" name='upper_limit'> <br> 
+<input type="submit" value="Submit" class="btn "/>
+</form>
+
+</body>
+</html>
+

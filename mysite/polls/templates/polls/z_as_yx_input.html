@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/button.css' %}">
+</head>
+<body>
+	<form action="{% url 'polls:z_as_yx' %}" method="post">
+{% csrf_token %}
+Expression of z in terms of x and y:
+<input type="text" name='yx_input'> <br> <br>
+<!-- Set lower limit of x:
+<input type="text" name='lower_limit'> <br> <br>
+Set upper limit of x:
+<input type="text" name='upper_limit'> <br> <br> -->
+<input type="submit" value="Submit" />
+</form>
+
+</body>
+</html>
+

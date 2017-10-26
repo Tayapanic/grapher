@@ -1,0 +1,13 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/button.css' %}">
+
+<h1> Graph </h1>
+
+<form action="{% url 'polls:piechart_input' %}" method="post">
+{% csrf_token %}
+Number of fields:
+<input type="text" name="piechart_input" />
+
+<input type="submit" value="Submit" />
+</form>
+

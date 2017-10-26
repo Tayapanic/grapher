@@ -1,0 +1,22 @@
+
+{% load staticfiles %}
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/button.css' %}">
+</head>
+
+<body>
+<center>
+<form action="{% url 'polls:graph_input' %}" method="post">
+{% csrf_token %}
+Number of fields:<br>
+<input type="text" name="number_forms" readonly="readonly" value="{{ n }}"> <br> <br>
+<a href="{% url 'polls:piechart_input' %}"> Change number of fields </a> <br> <br>
+{% for i in vase_list %}
+	<input type="text" name="after_input{{ forloop.counter }}" value="0.0" />  <br>
+{% endfor %}<br>
+<input type="submit" value="Submit" />
+</form>
+</center>
+</body>
+</html>
